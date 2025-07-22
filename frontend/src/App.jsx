@@ -14,6 +14,10 @@ function App() {
   }, []);
 
   const speak = (text) => {
+    if (!window.DID || !window.DID.render) {
+    console.error("D-ID SDK not loaded.");
+    return;
+  }
     window.DID.render({
       script: text,
       avatarId: process.env.REACT_APP_DID_AVATAR_ID,
