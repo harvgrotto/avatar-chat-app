@@ -34,7 +34,10 @@ function App() {
   };
 
   return (
+
+
     <div>
+       <div id="avatar" style={{ width: "400px", height: "400px", background: "#eee" }}></div>
       <button onClick={() => recognition.current.start()}>🎙️ Talk</button>
       <input value={msg} onChange={e => setMsg(e.target.value)} />
       <button onClick={handleSend}>Send</button>
