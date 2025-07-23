@@ -12,7 +12,7 @@ app = FastAPI()
 
 # 👇 Add this to allow frontend to talk to backend
 origins = [
-    "https://avatar-chat-rmmbkr720-james-projects-65c1adad.vercel.app",  # your deployed Vercel URL
+    "https://avatar-chat-h2bu3oeus-james-projects-65c1adad.vercel.app",  # your deployed Vercel URL
 ]
 
 app.add_middleware(
