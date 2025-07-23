@@ -31,7 +31,7 @@ const speak = (text) => {
       container: document.getElementById("avatar"),
     });
   } else {
-    console.error("D-ID SDK not loaded yet");
+    console.error("---->D-ID SDK not loaded yet");
   }
 };
 
