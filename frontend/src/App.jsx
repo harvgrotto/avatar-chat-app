@@ -36,7 +36,7 @@ const speak = (text) => {
 };
 
   const handleSend = async () => {
-    const res = await fetch("/chat", {
+    const res = await fetch("/https://avatar-chat-app.onrender.com/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: msg })
@@ -49,7 +49,6 @@ const speak = (text) => {
   return (
     <div>
       <div id="avatar" style={{ width: "400px", height: "400px", background: "#eee" }}></div>
-
       <button onClick={() => recognition.current.start()}>🎙️ Talk</button>
       <input value={msg} onChange={e => setMsg(e.target.value)} />
       <button onClick={handleSend}>Send</button>
