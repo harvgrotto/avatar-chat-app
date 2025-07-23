@@ -23,17 +23,26 @@ function App() {
   }, []);
 
 const speak = (text) => {
-  if (window.DID && window.DID.render) {
-    window.DID.render({
-      script: text,
-      avatarId: process.env.REACT_APP_DID_AVATAR_ID,
-      voice: "en-US-Standard-C",
+  if (window.DID && window.DID.renderPlayer) {
+    window.DID.renderPlayer({
+      script: { type: "text", input: text },
+      config: {
+        avatar: {
+          type: "avatar",
+          id: process.env.REACT_APP_DID_AVATAR_ID || "your-avatar-id"
+        },
+        fluent: true,
+        align: "center",
+        scale: 1,
+        autoplay: true,
+      },
       container: document.getElementById("avatar"),
     });
   } else {
-    console.error("---->D-ID SDK not loaded yet");
+    console.error("----> D-ID SDK not loaded or renderPlayer unavailable");
   }
 };
+
 
   const handleSend = async () => {
     const res = await fetch("https://avatar-chat-app.onrender.com/chat", {
