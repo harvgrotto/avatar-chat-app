@@ -36,7 +36,7 @@ const speak = (text) => {
 };
 
   const handleSend = async () => {
-    const res = await fetch("/https://avatar-chat-app.onrender.com/chat", {
+    const res = await fetch("https://avatar-chat-app.onrender.com/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: msg })
