@@ -22,19 +22,18 @@ function App() {
     }, 100);
   }, []);
 
-  const speak = (text) => {
-    if (!didReady) {
-      console.warn("D-ID not ready yet.");
-      return;
-    }
-
+const speak = (text) => {
+  if (window.DID && window.DID.render) {
     window.DID.render({
       script: text,
       avatarId: process.env.REACT_APP_DID_AVATAR_ID,
       voice: "en-US-Standard-C",
-      container: document.getElementById("avatar")
+      container: document.getElementById("avatar"),
     });
-  };
+  } else {
+    console.error("D-ID SDK not loaded yet");
+  }
+};
 
   const handleSend = async () => {
     const res = await fetch("/chat", {
