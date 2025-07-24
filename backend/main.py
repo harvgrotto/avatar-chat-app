@@ -1,26 +1,30 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import openai
 import os
 from dotenv import load_dotenv
-from openai import OpenAI  # ✅ New import for v1.x SDK
 
 load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # ✅ instantiate client
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = FastAPI()
 
+# 💡 Replace this with your actual deployed frontend URL
 origins = [
-    "https://avatar-chat-app-puce.vercel.app/",
+    "https://avatar-chat-app-puce.vercel.app",
+    "https://avatar-chat-app-git-main-james-projects-65c1adad.vercel.app",
+    "http://localhost:3000",  # (optional for local testing)
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # or ["*"] temporarily for debugging
+    allow_origins=origins,     # 👈 must match exactly
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 class ChatRequest(BaseModel):
     message: str
