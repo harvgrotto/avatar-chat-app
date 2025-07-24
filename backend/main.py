@@ -11,7 +11,7 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # ✅ instantiate client
 app = FastAPI()
 
 origins = [
-    "https://avatar-chat-app-git-main-james-projects-65c1adad.vercel.app",
+    "https://avatar-chat-app-puce.vercel.app/",
 ]
 
 app.add_middleware(
